@@ -1,0 +1,91 @@
+﻿<Window x:Class="ContactsTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContactsTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Text="{Binding lastname, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Background="Red"></TextBox>
+            <TextBox Text="{Binding firstname, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Background="Green"></TextBox>
+            
+            <Label Grid.Row="0" Grid.Column="0">LastName</Label>
+            <Label Grid.Row="1" Grid.Column="0">FirstName</Label>
+
+
+            <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                <Button  Command="{Binding AddCommand}">Добавить</Button>
+                <Button Command="{Binding DeleteCommand}">Удалить</Button>
+            </StackPanel>
+
+            
+
+        </Grid>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Items}" AutoGenerateColumns="False" 
+                  SelectedItem="{Binding selectedData}"
+                   local:ExtendedEvents.DataGridDoubleClickCommand="{Binding EditCommand}"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="lastName"/>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="firstName"/>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="patronicalName"/>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="birthDate"/>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="nickname"/>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="comment"/>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+
+
+            </DataGrid.Columns>
+            
+            
+        </DataGrid>
+    </Grid>
+</Window>

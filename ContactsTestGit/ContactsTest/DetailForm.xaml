@@ -1,0 +1,63 @@
+﻿<Window x:Class="ContactsTest.DetailForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContactsTest"
+        mc:Ignorable="d"
+        Title="DetailForm" Height="450" Width="800" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Text="{Binding lastname, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Background="Red"></TextBox>
+        <Label Grid.Row="0" Grid.Column="0">LastName</Label>
+
+        <TextBox Text="{Binding firstname, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Background="Green"></TextBox>
+        <Label Grid.Row="1" Grid.Column="0">FirstName</Label>
+
+        <TextBox Text="{Binding patronicalname, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Background="Red"></TextBox>
+        <Label Grid.Row="2" Grid.Column="0">PatronicalName</Label>
+
+        <TextBox Text="{Binding birthdate, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Background="Green"></TextBox>
+        <Label Grid.Row="3" Grid.Column="0">BirthDate</Label>
+
+        <TextBox Text="{Binding nickname, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Background="Red"></TextBox>
+        <Label Grid.Row="4" Grid.Column="0">Nickname</Label>
+
+        <TextBox Text="{Binding comment, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1" Background="Green"></TextBox>
+        <Label Grid.Row="5" Grid.Column="0">Comment</Label>
+
+        <DataGrid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding number}" CanUserAddRows="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn>
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="number"/>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <StackPanel Grid.Row="7" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Command="{Binding SaveCommand}">Save</Button>
+            <Button Command="{Binding CloseCommand}">Close</Button>
+        </StackPanel>
+        
+
+    </Grid>
+</Window>
